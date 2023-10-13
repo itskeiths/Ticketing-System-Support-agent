@@ -1,28 +1,33 @@
 "use client";
-import React, { useState } from 'react';
+
+import React from 'react';
 import { FaTimes, FaCommentAlt } from 'react-icons/fa';
 import { db } from '@/app/authentication/firebase';
-import ChatBox from '@/app/Chat/Chat';  
+import ChatBox from '@/app/Chat/Chat';
 
-interface DescriptionProps {
-  order: {
-    id: string;
-    name: string;
-    priority: string;
-    subject: string;
-    addedTime: string;
-    status: string;
-    description: string;
-    userId:string,
-    Issue:string,
-    issues:string,
-    email:string
-  };
-  onClose: () => void;
+interface OrderProps {
+  id: string;
+  name: string;
+  priority: string;
+  subject: string;
+  addedTime: string;
+  status: string;
+  userId: string;
+  Issue: string;
+  issues: string;
+  email: string;
 }
 
-export default function Description({ order, onClose}:DescriptionProps) {
-  const [isChatOpen, setChatOpen] = useState(false);
+/**
+ * @typedef {string} NewType
+ */
+
+const getDescription = (order: OrderProps): NewType => {
+  return order.description;
+};
+
+export default function Description({ order, onClose }: OrderProps) {
+  const [isChatOpen, setChatOpen] = React.useState(false);
 
   const handleOpenChat = () => {
     setChatOpen(true);
@@ -41,13 +46,15 @@ export default function Description({ order, onClose}:DescriptionProps) {
         >
           <FaTimes />
         </button>
-        <h2 className="text-3xl font-bold mb-4">{`Ticket ID: ${order.id}`}</h2>
+        <h2 className="text-3xl font-bold mb-4">
+          {`Ticket ID: ${order.id}`}
+        </h2>
         <p className="text-gray-600 mb-2">{`Email: ${order.email}`}</p>
         <p className="text-gray-600 mb-2">{`Status: ${order.status}`}</p>
         <p className="text-gray-600 mb-2">{`Subject: ${order.subject}`}</p>
         <p className="text-gray-600 mb-2">{`Issues: ${order.Issue}`}</p>
-        <p className="text-gray-800 mb-4">{`Description: ${order.description}`}</p>
-        
+        <p className="text-gray-800 mb-4">{`Description: ${getDescription(order)}`}</p>
+
         <div
           className="fixed bottom-4 right-4 cursor-pointer text-blue-500"
           onClick={handleOpenChat}
@@ -55,11 +62,10 @@ export default function Description({ order, onClose}:DescriptionProps) {
           <FaCommentAlt />
         </div>
 
-
         {isChatOpen && (
           <ChatBox order={order} onClose={handleCloseChat} />
         )}
       </div>
     </div>
   );
-};
+}
