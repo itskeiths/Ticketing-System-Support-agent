@@ -19,6 +19,7 @@
         "class-variance-authority": "^0.7.0",
         "clsx": "^2.0.0",
         "faker": "^6.6.6",
+        "firebase": "^10.5.0",
         "framer-motion": "^10.16.4",
         "heroicons": "^2.0.18",
         "lucide-react": "^0.284.0",
