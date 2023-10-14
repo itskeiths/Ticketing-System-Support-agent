@@ -17,12 +17,15 @@
 2. **Ticket Management:**
    - Change the status of tickets (New, Hold, Closed).
    - Pages for new, on-hold, and closed tickets.
+     
      ![](s4.png)
 
 3. **Ticket Sorting:**
    - Sort tickets by priority for efficient handling.
+     
      ![](s5.png)
 
 4. **Analytics:**
    - Report analytics page to assess ticket resolution efficiency.
+     
      ![](s6.png)
