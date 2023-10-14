@@ -1,10 +1,9 @@
+"use client";
 import React, { useEffect, useState } from 'react';
 import { FaCommentAlt, FaCog, FaFolderOpen } from 'react-icons/fa';
-import { BsSortDown } from 'react-icons/bs';
-import {collection, getDocs, updateDoc, doc, addDoc } from 'firebase/firestore';
+import {collection, getDocs, updateDoc, doc } from 'firebase/firestore';
 import { db,auth } from '@/app/authentication/firebase';
 import Description from '@/app/Description/page';
-import { useRouter } from 'next/navigation';
 import ChatBox from '@/app/Chat/Chat'
 
 
